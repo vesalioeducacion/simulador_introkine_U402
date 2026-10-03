@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTRODUCCIÓN A LA KINESIOLOGÍA - Tejido Epitelial, Conectivo y Matriz Extracelular (Facultad de Cs. Médicas - UCCuyo)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f7f9f6;
+        }
+        /* Paleta Institucional UCCuyo (Verde Oliva) */
+        .text-accent { color: #436600; }
+        .bg-accent { background-color: #436600; }
+        .bg-accent-hover:hover { background-color: #324d00; }
+        .bg-accent-light { background-color: #f1f6eb; }
+        .border-accent { border-color: #436600; }
+
+        .text-primary { color: #436600; }
+        .bg-primary { background-color: #436600; }
+        .bg-primary-dark { background-color: #324d00; }
+        .border-primary { border-color: #436600; }
+
+        .focus-accent:focus {
+            border-color: #436600;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 102, 0, 0.2);
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .canvas-bg {
+            background: radial-gradient(circle at center, #ffffff 0%, #f4f7f0 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Cabecera Institucional UCCuyo -->
+    <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    K
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-gray-800 tracking-wide uppercase">INTRODUCCIÓN A LA KINESIOLOGÍA</h1>
+                    <p class="text-xs text-gray-500 font-semibold">Lic. en Kinesiología y Fisiatría (Facultad de Cs. Médicas - UCCuyo)</p>
+                </div>
+            </div>
+            
+            <!-- Botón Guía de Uso -->
+            <button onclick="openTutorial()" class="flex items-center gap-1.5 px-3 py-1.5 bg-accent text-white text-xs font-semibold rounded-lg shadow-sm hover:opacity-90 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Guía de Uso
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenido Principal con Barra Lateral -->
+    <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 flex flex-col lg:flex-row gap-6">
+        
+        <!-- Menú de Navegación Lateral -->
+        <nav class="w-full lg:w-64 flex flex-row lg:flex-col gap-2 bg-white p-3 rounded-2xl shadow-sm border border-gray-100 overflow-x-auto lg:overflow-x-visible whitespace-nowrap lg:whitespace-normal sticky top-20 h-fit">
+            <button onclick="switchTab('tab-epitelial')" id="btn-tab-epitelial" class="bg-accent text-white flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition shadow-sm">
+                1. Tejido Epitelial
+            </button>
+            <button onclick="switchTab('tab-morfologia')" id="btn-tab-morfologia" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition">
+                2. Morfología y Capas
+            </button>
+            <button onclick="switchTab('tab-conectivo')" id="btn-tab-conectivo" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition">
+                3. Tejido Conectivo
+            </button>
+            <button onclick="switchTab('tab-celulas-mec')" id="btn-tab-celulas-mec" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition">
+                4. Células y Matriz
+            </button>
+            <button onclick="switchTab('tab-casos-clinicos')" id="btn-tab-casos-clinicos" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition">
+                5. Casos Kinesiológicos
+            </button>
+        </nav>
+
+        <!-- Contenedor Dinámico de Módulos -->
+        <div class="flex-1 space-y-6">
+
+            <!-- ==========================================
+                 MÓDULO 1: TEJIDO EPITELIAL Y POLARIDAD
+                 ========================================== -->
+            <section id="tab-epitelial" class="space-y-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 1</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">Tejido Epitelial: Polaridad, Cohesión y Funciones</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Arquitectura celular avascular, polaridad tridimensional y soporte sobre la membrana basal.
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        El <strong>tejido epitelial</strong> está constituido por láminas continuas de células estrechamente unidas con escasa o nula matriz extracelular entre ellas (alta cohesión). Es completamente <strong>avascular</strong> (carece de vasos sanguíneos propios), por lo que depende de la difusión de nutrientes y oxígeno provenientes de los capilares del tejido conectivo subyacente a través de la <strong>membrana basal</strong>. Sus células presentan una marcada <strong>polaridad celular</strong> dividida en tres dominios o polos:
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 text-xs">
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-accent flex items-center gap-1.5">
+                                <i class="fa-solid fa-arrow-up"></i> Polo Apical
+                            </span>
+                            <p class="text-gray-600">Superficie orientada hacia la luz (lumen) de una cavidad o el exterior. Presenta cilios (barrido de moco) o microvellosidades (aumento de superficie de absorción).</p>
+                        </div>
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                                <i class="fa-solid fa-arrows-left-right"></i> Polo Lateral
+                            </span>
+                            <p class="text-gray-600">Contacto con células vecinas. Alberga complejos de unión: zónula oclusiva (impermeabilidad), desmosomas (resistencia mecánica) y uniones comunicantes.</p>
+                        </div>
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-amber-700 flex items-center gap-1.5">
+                                <i class="fa-solid fa-arrow-down"></i> Polo Basal
+                            </span>
+                            <p class="text-gray-600">Se ancla firmemente a la membrana basal mediante hemidesmosomas. Recibe por difusión los nutrientes provenientes del tejido conectivo vascularizado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulador Visual e Interactivo en Canvas de la Polaridad Epitelial -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-microscope text-accent"></i>
+                            Modelo Celular Interactivo de Polaridad y Difusión
+                        </h3>
+                        <span class="text-xs text-gray-500 font-mono">Seleccioná un polo celular para inspeccionarlo</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <!-- Canvas Celular -->
+                        <div class="lg:col-span-7 flex flex-col items-center">
+                            <div class="w-full relative rounded-2xl border border-gray-200 overflow-hidden shadow-inner canvas-bg p-2">
+                                <canvas id="canvas-polaridad" width="480" height="290" class="w-full h-auto block cursor-pointer"></canvas>
+                            </div>
+                            <span class="text-[11px] text-gray-400 mt-2 text-center">
+                                Esquema histológico: polo apical luminal, uniones laterales, polo basal, membrana basal y conectivo con capilares.
+                            </span>
+                        </div>
+
+                        <!-- Selector y Detalle del Polo -->
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="flex flex-col gap-2">
+                                <button onclick="selectPolarZone('apical')" id="btn-polo-apical" class="p-3 rounded-xl border-2 text-left transition bg-accent-light border-accent">
+                                    <div class="font-bold text-accent text-xs">Polo Apical (Superficie Libre)</div>
+                                    <div class="text-[11px] text-gray-600">Microvellosidades, cilios y exposición luminal.</div>
+                                </button>
+                                <button onclick="selectPolarZone('lateral')" id="btn-polo-lateral" class="p-3 rounded-xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300">
+                                    <div class="font-bold text-gray-700 text-xs">Polo Lateral (Complejos de Unión)</div>
+                                    <div class="text-[11px] text-gray-600">Oclusión intercelular, desmosomas y cohesión tisular.</div>
+                                </button>
+                                <button onclick="selectPolarZone('basal')" id="btn-polo-basal" class="p-3 rounded-xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300">
+                                    <div class="font-bold text-gray-700 text-xs">Polo Basal & Membrana Basal</div>
+                                    <div class="text-[11px] text-gray-600">Hemidesmosomas y nutrición por difusión avascular.</div>
+                                </button>
+                            </div>
+
+                            <div id="polar-detail-card" class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-700 space-y-1.5 leading-relaxed">
+                                <strong class="text-accent block">Detalle Kinesiológico del Polo Apical:</strong>
+                                En las vías aéreas (epitelio respiratorio), el polo apical cuenta con cilios coordinados en metacronía que expulsan secreciones. La kinesiología respiratoria optimiza este drenaje mucociliar mediante técnicas de desobstrucción bronquial.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Funciones Epiteliales en Kinesiología -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-3">
+                    <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-virus text-accent"></i>
+                        Las Cuatro Funciones Epiteliales Fundamentales
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-accent">1. Barrera y Protección:</span>
+                            <p class="text-gray-600">La epidermis protege frente a abrasión mecánica, agentes patógenos y pérdida de agua durante el vendaje o terapia manual.</p>
+                        </div>
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-accent">2. Secreción:</span>
+                            <p class="text-gray-600">Epitelios glandulares que secretan moco lubricante, sudor termorregulador o enzimas indispensables en el ejercicio físico.</p>
+                        </div>
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-accent">3. Absorción:</span>
+                            <p class="text-gray-600">Epitelio intestinal con microvellosidades especializadas en la incorporación de nutrientes y electrolitos.</p>
+                        </div>
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-accent">4. Filtración y Excreción:</span>
+                            <p class="text-gray-600">Epitelio alveolar y renal donde se difunden gases (O₂/CO₂) o se eliminan productos de desecho metabólico.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 MÓDULO 2: CLASIFICACIÓN MORFOLÓGICA
+                 ========================================== -->
+            <section id="tab-morfologia" class="space-y-6 hidden">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 2</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">Clasificación Morfológica de los Epitelios</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Criterios histológicos combinados: número de estratos celulares y forma de las células superficiales.
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Los epitelios de revestimiento se clasifican según dos criterios histológicos rigurosos: el <strong>número de capas celulares</strong> (simple, estratificado y pseudoestratificado) y la <strong>forma celular</strong> de la capa más superficial (pavimentoso/escamoso, cúbico, cilíndrico/prismático y de transición/urotelio).
+                    </p>
+                </div>
+
+                <!-- Microscopio Virtual Interactivo -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-eye text-accent"></i>
+                            Microscopio Virtual: Explorador de Tipos Epiteliales
+                        </h3>
+                        <span id="micro-type-title" class="text-xs font-bold text-accent font-mono">
+                            Epitelio Pavimentoso Simple
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <!-- Canvas del Microscopio -->
+                        <div class="lg:col-span-7 flex flex-col items-center">
+                            <div class="w-full relative rounded-2xl border border-gray-200 overflow-hidden shadow-inner canvas-bg p-2">
+                                <canvas id="canvas-microscopio" width="480" height="250" class="w-full h-auto block"></canvas>
+                            </div>
+                            <span class="text-[11px] text-gray-400 mt-2 text-center">
+                                Vista de microscopía óptica: núcleos celulares (púrpura), citoplasma (rosado) y membrana basal de soporte.
+                            </span>
+                        </div>
+
+                        <!-- Selector de Capas y Formas -->
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="space-y-2">
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">1. Número de Capas:</label>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button onclick="setLayers('simple')" id="btn-layer-simple" class="py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-accent-light border-accent text-accent transition">
+                                        Simple
+                                    </button>
+                                    <button onclick="setLayers('estratificado')" id="btn-layer-estratificado" class="py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-white border-gray-200 text-gray-700 hover:border-gray-300 transition">
+                                        Estratificado
+                                    </button>
+                                    <button onclick="setLayers('pseudo')" id="btn-layer-pseudo" class="py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-white border-gray-200 text-gray-700 hover:border-gray-300 transition">
+                                        Pseudoestrat.
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">2. Forma Celular Superficial:</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <button onclick="setShape('pavimentoso')" id="btn-shape-pavimentoso" class="py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-accent-light border-accent text-accent transition">
+                                        Pavimentoso (Plano)
+                                    </button>
+                                    <button onclick="setShape('cubico')" id="btn-shape-cubico" class="py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-white border-gray-200 text-gray-700 hover:border-gray-300 transition">
+                                        Cúbico
+                                    </button>
+                                    <button onclick="setShape('cilindrico')" id="btn-shape-cilindrico" class="py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-white border-gray-200 text-gray-700 hover:border-gray-300 transition">
+                                        Cilíndrico
+                                    </button>
+                                    <button onclick="setShape('transicion')" id="btn-shape-transicion" class="py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-white border-gray-200 text-gray-700 hover:border-gray-300 transition">
+                                        Transición (Urotelio)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Ficha Descriptiva del Epitelio Seleccionado -->
+                            <div id="micro-desc-card" class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-700 space-y-1 leading-relaxed">
+                                <strong class="text-accent block">Epitelio Pavimentoso Simple:</strong>
+                                Una sola capa de células aplanadas semejantes a escamas. Facilita la filtración y difusión rápida de gases. Se ubica en los alvéolos pulmonares y el endotelio vascular.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Epitelios de Revestimiento vs Glandulares -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-white rounded-2xl border border-gray-200 space-y-2 shadow-sm">
+                        <div class="font-bold text-accent text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group"></i> Epitelios de Revestimiento
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            Forman la cubierta externa de la piel y el tapiz interno de los tractos digestivo, urinario y respiratorio. Su disposición en múltiples capas brinda resistencia frente al rozamiento físico (ej. epidermis queratinizada), mientras que una sola capa favorece el intercambio activo de sustancias.
+                        </p>
+                    </div>
+
+                    <div class="p-4 bg-white rounded-2xl border border-gray-200 space-y-2 shadow-sm">
+                        <div class="font-bold text-amber-700 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-flask"></i> Epitelios Glandulares
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            Células especializadas en la producción y secreción de sustancias metabólicas. Se dividen en glándulas <strong>exocrinas</strong> (vierten su contenido mediante conductos hacia una superficie o cavidad, como el sudor o saliva) y <strong>endocrinas</strong> (secretan hormonas directamente al torrente sanguíneo).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 MÓDULO 3: TEJIDO CONECTIVO
+                 ========================================== -->
+            <section id="tab-conectivo" class="space-y-6 hidden">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 3</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">El Universo del Tejido Conectivo</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Soporte estructural, transmisión de fuerzas biomecánicas, defensa inmunitaria y reserva energética.
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        El <strong>tejido conectivo</strong> es el tejido más abundante y ampliamente distribuido del cuerpo humano. A diferencia del epitelial, presenta células separadas por una abundante <strong>matriz extracelular (MEC)</strong> y posee una rica vascularización (a excepción del cartílago y tendones densos que son avasculares o escasamente irrigados). Se clasifica en tejidos <strong>embrionarios</strong> y <strong>maduros</strong>:
+                    </p>
+                </div>
+
+                <!-- Selector de Tipos de Tejido Conectivo -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <button onclick="selectConnectiveFamily('laxo')" id="btn-con-laxo" class="p-4 rounded-2xl border-2 text-left transition bg-accent-light border-accent shadow-sm">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-accent text-sm">1. Conectivo Laxo</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-accent text-white rounded">Areolar / Adiposo</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">Abundante sustancia fundamental y células con fibras dispersas. Amortiguación y sostén.</p>
+                    </button>
+
+                    <button onclick="selectConnectiveFamily('denso')" id="btn-con-denso" class="p-4 rounded-2xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-gray-700 text-sm">2. Conectivo Denso</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-gray-200 text-gray-700 rounded">Tendones / Ligamentos</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">Predominio masivo de haces de colágeno. Máxima resistencia a la tracción biomecánica.</p>
+                    </button>
+
+                    <button onclick="selectConnectiveFamily('especial')" id="btn-con-especial" class="p-4 rounded-2xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-gray-700 text-sm">3. Especializado</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-gray-200 text-gray-700 rounded">Cartílago / Hueso / Sangre</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">Matrices mineralizadas o líquidas con propiedades de soporte esquelético y transporte.</p>
+                    </button>
+                </div>
+
+                <!-- Detalle y Canvas Biomecánico del Conectivo -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-3">
+                        <h3 id="connective-detail-title" class="text-sm font-bold text-gray-800">
+                            Tejido Conectivo Laxo (Areolar y Adiposo)
+                        </h3>
+                        <span id="connective-badge" class="px-2.5 py-1 rounded-md text-xs font-bold bg-accent-light text-accent">
+                            Relleno y Flexibilidad Tisular
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <div class="lg:col-span-7 flex flex-col items-center">
+                            <div class="w-full relative rounded-2xl border border-gray-200 overflow-hidden shadow-inner canvas-bg p-2">
+                                <canvas id="canvas-conectivo" width="480" height="250" class="w-full h-auto block"></canvas>
+                            </div>
+                            <span class="text-[11px] text-gray-400 mt-2 text-center">
+                                Arquitectura de la matriz: fibras de colágeno (gruesas), fibras elásticas (delgadas ramificadas) y sustancia fundamental.
+                            </span>
+                        </div>
+
+                        <div class="lg:col-span-5 space-y-3">
+                            <div id="connective-desc-box" class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-700 space-y-2 leading-relaxed">
+                                <strong class="text-accent block text-sm">Relevancia en Kinesiología y Fisiatría:</strong>
+                                <p>
+                                    El <strong>tejido conectivo areolar</strong> se encuentra debajo de todos los epitelios, envuelve los paquetes vasculonerviosos y forma la lámina propia de las mucosas. Su sustancia fundamental gelatinosa rica en ácido hialurónico amortigua las presiones y facilita el deslizamiento durante el masaje terapéutico y la movilización miofascial.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clasificación Completa: Embrionario vs Maduro -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-3">
+                    <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-diagram-project text-accent"></i>
+                        Cuadro Comparativo de los Tejidos Conectivos
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-2">
+                            <span class="font-bold text-accent text-sm block">Tejidos Conectivos Embrionarios:</span>
+                            <ul class="space-y-1.5 text-gray-600 list-disc list-inside">
+                                <li><strong>Mesénquima:</strong> Células pluripotenciales estrelladas en matriz fluida. Da origen a todos los conectivos maduros del adulto.</li>
+                                <li><strong>Mucoso (Gelatina de Wharton):</strong> Presente en el cordón umbilical, rico en proteoglucanos que previenen el colapso vascular fetal.</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-2">
+                            <span class="font-bold text-amber-700 text-sm block">Tejidos Conectivos Maduros:</span>
+                            <ul class="space-y-1.5 text-gray-600 list-disc list-inside">
+                                <li><strong>Denso Modelado / Regular:</strong> Fibras de colágeno orientadas en haces paralelos; compone tendones y ligamentos locomotores.</li>
+                                <li><strong>Denso Inmodelado / Irregular:</strong> Haces multidireccionales resistentes a tensiones en varias direcciones (dermis y cápsulas articulares).</li>
+                                <li><strong>Cartilaginoso y Óseo:</strong> Soporte articular y palancas rígidas locomotoras.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 MÓDULO 4: CÉLULAS Y MATRIZ EXTRACELULAR
+                 ========================================== -->
+            <section id="tab-celulas-mec" class="space-y-6 hidden">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 4</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">Células del Conectivo y Matriz Extracelular (MEC)</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Nomenclatura celular (-blasto vs -cito), fibras proteicas y sustancia fundamental.
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        La funcionalidad del tejido conectivo depende de la interacción entre sus células y los componentes bioquímicos de la <strong>matriz extracelular (MEC)</strong>. Las células inmaduras activas en división y síntesis llevan el sufijo <strong>-blasto</strong> (fibroblasto, osteoblasto, condroblasto), mientras que las células maduras con menor tasa de secreción llevan el sufijo <strong>-cito</strong> (fibrocito, osteocito, condrocito).
+                    </p>
+                </div>
+
+                <!-- Explorador de Células Conectivas y Fibras -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Tarjeta de Poblaciones Celulares -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-dna text-accent"></i>
+                            Poblaciones Celulares del Tejido Conectivo
+                        </h3>
+                        <p class="text-xs text-gray-600">
+                            Hacé clic en cada célula para conocer su rol en la reparación y respuesta inflamatoria:
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <button onclick="inspectCell('fibroblasto')" id="btn-cell-fibroblasto" class="p-2.5 rounded-xl border-2 text-left font-bold transition bg-accent-light border-accent text-accent">
+                                Fibroblasto / -cito
+                            </button>
+                            <button onclick="inspectCell('macrofago')" id="btn-cell-macrofago" class="p-2.5 rounded-xl border-2 text-left font-bold transition bg-white border-gray-200 text-gray-700 hover:border-gray-300">
+                                Macrófago
+                            </button>
+                            <button onclick="inspectCell('mastocito')" id="btn-cell-mastocito" class="p-2.5 rounded-xl border-2 text-left font-bold transition bg-white border-gray-200 text-gray-700 hover:border-gray-300">
+                                Mastocito (Cebada)
+                            </button>
+                            <button onclick="inspectCell('plasmocito')" id="btn-cell-plasmocito" class="p-2.5 rounded-xl border-2 text-left font-bold transition bg-white border-gray-200 text-gray-700 hover:border-gray-300">
+                                Célula Plasmática
+                            </button>
+                        </div>
+
+                        <div id="cell-detail-card" class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-700 space-y-1 leading-relaxed">
+                            <strong class="text-accent block text-sm">Fibroblastos:</strong>
+                            Son las células más numerosas del tejido conectivo. Sintetizan activamente las fibras proteicas (colágeno, elastina) y la sustancia fundamental amorfa. Son determinantes en la cicatrización y regeneración tras lesiones musculoesqueléticas atendidas en kinesiología.
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de Matriz Extracelular y Fibras -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-cubes-stacked text-accent"></i>
+                            Componentes de la Matriz Extracelular (MEC)
+                        </h3>
+                        <p class="text-xs text-gray-600">
+                            La MEC proporciona soporte físico y bioquímico a los tejidos mediante:
+                        </p>
+
+                        <div class="space-y-2 text-xs">
+                            <div class="p-3 bg-gray-50 rounded-xl border border-gray-200">
+                                <strong class="text-accent block">1. Fibras Colágenas (Colágeno Tipo I y II):</strong>
+                                Muy fuertes y resistentes a la tracción longitudinal; no son rígidas, lo que permite cierta flexibilidad. Esenciales en tendones y aponeurosis.
+                            </div>
+                            <div class="p-3 bg-gray-50 rounded-xl border border-gray-200">
+                                <strong class="text-accent block">2. Fibras Elásticas (Elastina y Fibrilina):</strong>
+                                Se ramifican y forman redes elásticas capaces de estirarse hasta un 150% de su longitud y recuperar su forma original (pulmones, piel, arterias).
+                            </div>
+                            <div class="p-3 bg-gray-50 rounded-xl border border-gray-200">
+                                <strong class="text-accent block">3. Fibras Reticulares (Colágeno Tipo III):</strong>
+                                Redes finas y delicadas que constituyen el estroma de sostén en ganglios linfáticos, bazo y médula ósea.
+                            </div>
+                            <div class="p-3 bg-accent-light rounded-xl border border-accent/20">
+                                <strong class="text-accent block">4. Sustancia Fundamental:</strong>
+                                Gel hidratado compuesto por agua, iones y proteoglucanos con cadenas de glucosaminoglucanos (ácido hialurónico, condroitínsulfato).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 MÓDULO 5: CASOS CLÍNICOS Y KINESIOLÓGICOS
+                 ========================================== -->
+            <section id="tab-casos-clinicos" class="space-y-6 hidden">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 5</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">Razonamiento Kinesiológico e Histológico</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Resolución de casos clínicos y fisiopatológicos en Kinesiología y Fisiatría.
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Seleccioná y analizá cada caso práctico interactivo para validar tu criterio histológico sobre cicatrización, tendones, sobrecargas y barreras epiteliales.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Caso 1 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 space-y-3">
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs">
+                            <i class="fa-solid fa-bandage"></i>
+                            CASO 1: Cicatrización de Úlceras y Regeneración Epitelial
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-800">
+                            ¿Por qué una lesión que daña únicamente la epidermis no genera sangrado inmediato y cicatriza rápidamente?
+                        </h4>
+                        <div class="space-y-2 text-xs">
+                            <button onclick="checkCase(1, 'a')" id="c1-opt-a" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>A)</strong> Porque el tejido epitelial es completamente avascular y posee células con una elevadísima tasa de división mitótica para regenerar la capa protectora.
+                            </button>
+                            <button onclick="checkCase(1, 'b')" id="c1-opt-b" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>B)</strong> Porque los capilares epiteliales se coagulan instantáneamente gracias a los osteoblastos.
+                            </button>
+                            <button onclick="checkCase(1, 'c')" id="c1-opt-c" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>C)</strong> Debido a que el epitelio contiene una matriz extracelular calcificada impermeable.
+                            </button>
+                        </div>
+                        <div id="c1-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+
+                    <!-- Caso 2 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 space-y-3">
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs">
+                            <i class="fa-solid fa-person-running"></i>
+                            CASO 2: Tendinopatía Aquiliana en Deportistas
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-800">
+                            Histológicamente, ¿qué tejido conforma el tendón de Aquiles y por qué su tiempo de reparación kinesiológica es lento?
+                        </h4>
+                        <div class="space-y-2 text-xs">
+                            <button onclick="checkCase(2, 'a')" id="c2-opt-a" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>A)</strong> Es tejido conectivo denso modelado (haces de colágeno paralelos); su vascularización es escasa, lo que enlentece la llegada de nutrientes para la síntesis de colágeno.
+                            </button>
+                            <button onclick="checkCase(2, 'b')" id="c2-opt-b" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>B)</strong> Es tejido epitelial pseudoestratificado cilíndrico sin matriz extracelular.
+                            </button>
+                            <button onclick="checkCase(2, 'c')" id="c2-opt-c" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>C)</strong> Es tejido conectivo laxo areolar con excesiva irrigación sanguínea continua.
+                            </button>
+                        </div>
+                        <div id="c2-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+
+                    <!-- Caso 3 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 space-y-3">
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs">
+                            <i class="fa-solid fa-lungs"></i>
+                            CASO 3: Kinesiología Respiratoria en EPOC y Enfisema
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-800">
+                            En el enfisema pulmonar se destruyen las paredes alveolares y sus fibras elásticas. ¿Qué consecuencia mecánica experimenta el paciente?
+                        </h4>
+                        <div class="space-y-2 text-xs">
+                            <button onclick="checkCase(3, 'a')" id="c3-opt-a" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>A)</strong> Pérdida del retroceso elástico pasivo pulmonar, atrapamiento aéreo e hiperinsuflación durante la espiración.
+                            </button>
+                            <button onclick="checkCase(3, 'b')" id="c3-opt-b" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>B)</strong> Proliferación excesiva de mastocitos que vuelven rígida la tráquea.
+                            </button>
+                            <button onclick="checkCase(3, 'c')" id="c3-opt-c" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>C)</strong> Aumento de la difusión de oxígeno debido a la ausencia de epitelio simple.
+                            </button>
+                        </div>
+                        <div id="c3-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+
+                    <!-- Caso 4 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 space-y-3">
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                            CASO 4: Fibrosis y Cicatriz Hipertrófica
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-800">
+                            Durante la rehabilitación de un desgarro muscular, ¿qué célula del tejido conectivo es responsable de generar la cicatriz de colágeno (fibrosis)?
+                        </h4>
+                        <div class="space-y-2 text-xs">
+                            <button onclick="checkCase(4, 'a')" id="c4-opt-a" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>A)</strong> El fibroblasto (célula inmadura sintetizadora de colágeno y matriz).
+                            </button>
+                            <button onclick="checkCase(4, 'b')" id="c4-opt-b" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>B)</strong> El macrófago exclusivamente mediante fagocitosis.
+                            </button>
+                            <button onclick="checkCase(4, 'c')" id="c4-opt-c" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>C)</strong> El eritrocito mediante transporte de hemoglobina.
+                            </button>
+                        </div>
+                        <div id="c4-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Modal: Guía de Uso -->
+    <div id="modal-tutorial" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white max-w-3xl w-full rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-accent p-4 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    <h3 class="font-bold text-base">Guía de Uso del Simulador y Orientación Pedagógica</h3>
+                </div>
+                <button onclick="closeTutorial()" class="text-white hover:text-gray-200 transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto space-y-5 text-xs md:text-sm text-gray-600 custom-scroll leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm mb-1 text-accent flex items-center gap-2">
+                        <i class="fa-solid fa-bullseye"></i> 1. Propósito Tecnopedagógico
+                    </h4>
+                    <p>
+                        Este simulador interactivo está diseñado para estudiantes del curso de ingreso a la <strong>Licenciatura en Kinesiología y Fisiatría (Facultad de Ciencias Médicas - Universidad Católica de Cuyo)</strong>. Su finalidad es profundizar el estudio de los tejidos básicos corporales (epitelial y conectivo), la polaridad celular, la clasificación morfológica y la ultraestructura de la matriz extracelular, vinculándolos directamente con el ejercicio clínico de la kinesiología.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm mb-2 text-accent flex items-center gap-2">
+                        <i class="fa-solid fa-compass"></i> 2. Guía Paso a Paso de los Módulos
+                    </h4>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent">Módulo 1: Tejido Epitelial y Polaridad</span>
+                            <p class="text-xs text-gray-600 mt-1">
+                                • <strong>Polaridad Celular:</strong> Inspeccioná los dominios apical, lateral y basal en Canvas.<br>
+                                • <strong>Avascularidad y Cohesión:</strong> Comprendé la nutrición por difusión desde el tejido conectivo subyacente y las 4 funciones epiteliales fundamentales.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent">Módulo 2: Morfología y Capas</span>
+                            <p class="text-xs text-gray-600 mt-1">
+                                • <strong>Microscopio Virtual:</strong> Combiná el número de capas (simple, estratificado, pseudoestratificado) con la forma celular superficial (pavimentoso, cúbico, cilíndrico, urotelio).<br>
+                                • <strong>Correlato Clínico:</strong> Analizá alvéolos pulmonares, vías urinarias y epidermis.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent">Módulo 3: Tejido Conectivo</span>
+                            <p class="text-xs text-gray-600 mt-1">
+                                • <strong>Clasificación y Variedades:</strong> Explorá las diferencias histológicas y biomecánicas entre conectivo laxo (areolar/adiposo), denso (tendones/ligamentos) y especializados.<br>
+                                • <strong>Canvas de la Matriz:</strong> Visualizá la distribución de fibras y sustancia fundamental.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent">Módulo 4: Células y Matriz Extracelular</span>
+                            <p class="text-xs text-gray-600 mt-1">
+                                • <strong>Nomenclatura:</strong> Diferenciá células inmaduras sintetizadoras (-blasto) de células maduras de mantenimiento (-cito).<br>
+                                • <strong>Fibras Proteicas:</strong> Colágeno (tensión), elastina (retroceso elástico) y reticulares (estroma).
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent">Módulo 5: Casos Kinesiológicos</span>
+                            <p class="text-xs text-gray-600 mt-1">
+                                • <strong>Razonamiento Práctico:</strong> Resolvé los 4 casos clínicos sobre cicatrización epidérmica, tendinopatía de Aquiles, enfisema pulmonar y fibrosis muscular.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm mb-1 text-accent flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb"></i> 3. Navegación Libre y sin Penalizaciones
+                    </h4>
+                    <p>
+                        El entorno fomenta el razonamiento activo universitario sin penalizaciones numéricas ni bloqueos de avance. Podés ajustar las variables y repetir las simulaciones cuantas veces desees para afianzar tus conocimientos histológicos y kinesiológicos.
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex justify-end">
+                <button onclick="closeTutorial()" class="px-4 py-2 bg-accent text-white rounded-xl text-xs font-semibold hover:bg-accent-hover transition">
+                    Entendido, comenzar exploración
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de Página Institucional -->
+    <footer class="bg-white border-t border-gray-200 py-4 text-center text-xs text-gray-500 mt-12">
+        <p>Desarrollado por vesalio - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- Lógica de la Aplicación en JavaScript -->
+    <script>
+        // Navegación entre pestañas
+        function switchTab(tabId) {
+            const tabs = ['tab-epitelial', 'tab-morfologia', 'tab-conectivo', 'tab-celulas-mec', 'tab-casos-clinicos'];
+            const buttons = ['btn-tab-epitelial', 'btn-tab-morfologia', 'btn-tab-conectivo', 'btn-tab-celulas-mec', 'btn-tab-casos-clinicos'];
+
+            tabs.forEach(t => {
+                const el = document.getElementById(t);
+                if (el) el.classList.add('hidden');
+            });
+
+            buttons.forEach(b => {
+                const btn = document.getElementById(b);
+                if (btn) {
+                    btn.className = 'text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition';
+                }
+            });
+
+            const activeTab = document.getElementById(tabId);
+            const activeBtn = document.getElementById('btn-' + tabId);
+
+            if (activeTab) activeTab.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.className = 'bg-accent text-white flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition shadow-sm';
+            }
+
+            if (tabId === 'tab-epitelial') {
+                setTimeout(drawPolaridadCanvas, 50);
+            } else if (tabId === 'tab-morfologia') {
+                setTimeout(drawMicroscopioCanvas, 50);
+            } else if (tabId === 'tab-conectivo') {
+                setTimeout(drawConectivoCanvas, 50);
+            }
+        }
+
+        // Modal Tutorial
+        function openTutorial() {
+            document.getElementById('modal-tutorial').classList.remove('hidden');
+        }
+        function closeTutorial() {
+            document.getElementById('modal-tutorial').classList.add('hidden');
+        }
+
+        // =================================================================
+        // MÓDULO 1: POLARIDAD EPITELIAL EN CANVAS
+        // =================================================================
+        let currentPolarZone = 'apical';
+
+        function selectPolarZone(zone) {
+            currentPolarZone = zone;
+            const buttons = ['apical', 'lateral', 'basal'];
+            buttons.forEach(z => {
+                const btn = document.getElementById(`btn-polo-${z}`);
+                if (z === zone) {
+                    btn.className = 'p-3 rounded-xl border-2 text-left transition bg-accent-light border-accent';
+                    btn.querySelector('div:first-child').className = 'font-bold text-accent text-xs';
+                } else {
+                    btn.className = 'p-3 rounded-xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300';
+                    btn.querySelector('div:first-child').className = 'font-bold text-gray-700 text-xs';
+                }
+            });
+
+            const card = document.getElementById('polar-detail-card');
+            if (zone === 'apical') {
+                card.innerHTML = `<strong class="text-accent block">Detalle Kinesiológico del Polo Apical:</strong>
+                En las vías aéreas (epitelio respiratorio), el polo apical cuenta con cilios coordinados en metacronía que expulsan secreciones. La kinesiología respiratoria optimiza este drenaje mucociliar mediante técnicas de desobstrucción bronquial. En el intestino, posee microvellosidades que multiplican la absorción nutricional.`;
+            } else if (zone === 'lateral') {
+                card.innerHTML = `<strong class="text-accent block">Detalle Kinesiológico del Polo Lateral:</strong>
+                Contiene zónulas oclusivas (bloquean el paso paracelular obligando a la vía transcelular) y desmosomas remachados con filamentos de queratina. Esta cohesión es clave para que la piel soporte fuerzas de tracción y cizallamiento durante el movimiento articular.`;
+            } else {
+                card.innerHTML = `<strong class="text-accent block">Detalle Kinesiológico del Polo Basal:</strong>
+                Se ancla a la lámina basal mediante hemidesmosomas integrados por integrinas. Al ser un tejido avascular, los nutrientes, electrolitos y fármacos aplicados por iontoforesis o cremas kinesiológicas difunden desde los capilares del conectivo subyacente hacia las células epiteliales a través de esta interfase.`;
+            }
+
+            drawPolaridadCanvas();
+        }
+
+        function drawPolaridadCanvas() {
+            const canvas = document.getElementById('canvas-polaridad');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Coordenadas
+            const cellWidth = 140;
+            const cellHeight = 150;
+            const cellX = w / 2 - cellWidth / 2;
+            const cellY = 50;
+
+            // Lumen arriba
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillRect(0, 0, w, cellY);
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = 'bold 11px Outfit, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('LUMEN / SUPERFICIE LIBRE EXTERNA', w / 2, 24);
+
+            // Célula central
+            ctx.fillStyle = currentPolarZone === 'apical' ? '#f1f6eb' : '#f8fafc';
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.roundRect(cellX, cellY, cellWidth, cellHeight, 6);
+            ctx.fill();
+            ctx.stroke();
+
+            // Células vecinas laterales
+            ctx.fillStyle = '#f1f5f9';
+            ctx.fillRect(cellX - 100, cellY, 90, cellHeight);
+            ctx.fillRect(cellX + cellWidth + 10, cellY, 90, cellHeight);
+
+            // Núcleo celular
+            ctx.fillStyle = '#818cf8';
+            ctx.beginPath();
+            ctx.arc(cellX + cellWidth / 2, cellY + cellHeight / 2 + 15, 26, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 10px Outfit, sans-serif';
+            ctx.fillText('Núcleo', cellX + cellWidth / 2, cellY + cellHeight / 2 + 18);
+
+            // Resaltar POLO APICAL (Microvellosidades o Cilios)
+            ctx.strokeStyle = currentPolarZone === 'apical' ? '#436600' : '#94a3b8';
+            ctx.lineWidth = currentPolarZone === 'apical' ? 3 : 2;
+            for (let i = 0; i < 14; i++) {
+                const mx = cellX + 5 + i * 9.5;
+                ctx.beginPath();
+                ctx.moveTo(mx, cellY);
+                ctx.lineTo(mx, cellY - 14);
+                ctx.stroke();
+            }
+
+            // Resaltar POLO LATERAL (Complejos de unión)
+            const latColor = currentPolarZone === 'lateral' ? '#436600' : '#64748b';
+            ctx.fillStyle = latColor;
+            // Uniones izq
+            ctx.fillRect(cellX - 4, cellY + 20, 8, 12); // Unión oclusiva
+            ctx.fillRect(cellX - 4, cellY + 50, 8, 14); // Desmosoma
+            // Uniones der
+            ctx.fillRect(cellX + cellWidth - 4, cellY + 20, 8, 12);
+            ctx.fillRect(cellX + cellWidth - 4, cellY + 50, 8, 14);
+
+            // Membrana Basal
+            const bmY = cellY + cellHeight;
+            ctx.strokeStyle = currentPolarZone === 'basal' ? '#436600' : '#475569';
+            ctx.lineWidth = currentPolarZone === 'basal' ? 4 : 3;
+            ctx.beginPath();
+            ctx.moveTo(30, bmY);
+            ctx.lineTo(w - 30, bmY);
+            ctx.stroke();
+
+            // Hemidesmosomas
+            ctx.fillStyle = currentPolarZone === 'basal' ? '#436600' : '#64748b';
+            for (let i = 0; i < 4; i++) {
+                ctx.fillRect(cellX + 20 + i * 30, bmY - 4, 15, 4);
+            }
+
+            // Tejido Conectivo Subyacente (abajo de membrana basal)
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillRect(0, bmY + 2, w, h - bmY - 2);
+
+            // Capilares sanguíneos en el conectivo (difusión de O₂ / nutrientes)
+            ctx.fillStyle = '#fee2e2';
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(w / 2 - 60, bmY + 45, 18, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(w / 2 + 60, bmY + 45, 18, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = '#dc2626';
+            ctx.font = 'bold 9px Outfit, sans-serif';
+            ctx.fillText('Capilar', w / 2 - 60, bmY + 48);
+            ctx.fillText('Capilar', w / 2 + 60, bmY + 48);
+
+            // Flechas de difusión nutricional
+            ctx.strokeStyle = '#10b981';
+            ctx.fillStyle = '#10b981';
+            ctx.lineWidth = 1.5;
+            ctx.setLineDash([3, 3]);
+
+            ctx.beginPath();
+            ctx.moveTo(w / 2 - 50, bmY + 26);
+            ctx.lineTo(cellX + 35, bmY + 2);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(w / 2 + 50, bmY + 26);
+            ctx.lineTo(cellX + cellWidth - 35, bmY + 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Rótulos
+            ctx.fillStyle = '#475569';
+            ctx.font = 'bold 10px Outfit, sans-serif';
+            ctx.fillText('Lámina / Membrana Basal', w / 2, bmY + 14);
+            ctx.fillStyle = '#64748b';
+            ctx.fillText('Tejido Conectivo Vascularizado (Nutrición por Difusión)', w / 2, bmY + 75);
+        }
+
+        // =================================================================
+        // MÓDULO 2: MICROSCOPIO VIRTUAL (CAPAS Y FORMAS)
+        // =================================================================
+        let currentLayers = 'simple';
+        let currentShape = 'pavimentoso';
+
+        function setLayers(layer) {
+            currentLayers = layer;
+            ['simple', 'estratificado', 'pseudo'].forEach(l => {
+                const btn = document.getElementById(`btn-layer-${l}`);
+                if (l === layer) {
+                    btn.className = 'py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-accent-light border-accent text-accent transition';
+                } else {
+                    btn.className = 'py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-white border-gray-200 text-gray-700 hover:border-gray-300 transition';
+                }
+            });
+            updateMicroscopioInfo();
+        }
+
+        function setShape(shape) {
+            currentShape = shape;
+            ['pavimentoso', 'cubico', 'cilindrico', 'transicion'].forEach(s => {
+                const btn = document.getElementById(`btn-shape-${s}`);
+                if (s === shape) {
+                    btn.className = 'py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-accent-light border-accent text-accent transition';
+                } else {
+                    btn.className = 'py-2 px-2.5 rounded-xl border-2 text-center text-xs font-bold bg-white border-gray-200 text-gray-700 hover:border-gray-300 transition';
+                }
+            });
+            updateMicroscopioInfo();
+        }
+
+        function updateMicroscopioInfo() {
+            const title = document.getElementById('micro-type-title');
+            const card = document.getElementById('micro-desc-card');
+
+            let layerName = currentLayers === 'simple' ? 'Simple' : (currentLayers === 'estratificado' ? 'Estratificado' : 'Pseudoestratificado');
+            let shapeName = currentShape === 'pavimentoso' ? 'Pavimentoso' : (currentShape === 'cubico' ? 'Cúbico' : (currentShape === 'cilindrico' ? 'Cilíndrico' : 'de Transición (Urotelio)'));
+
+            title.textContent = `Epitelio ${shapeName} ${layerName}`;
+
+            if (currentLayers === 'simple' && currentShape === 'pavimentoso') {
+                card.innerHTML = `<strong class="text-accent block">Epitelio Pavimentoso Simple:</strong>
+                Una sola capa de células planas delgadas. Facilita la difusión rápida de gases y líquidos. Presente en alvéolos pulmonares (hematosis analizada en kinesiología respiratoria) y endotelio vascular.`;
+            } else if (currentLayers === 'simple' && currentShape === 'cubico') {
+                card.innerHTML = `<strong class="text-accent block">Epitelio Cúbico Simple:</strong>
+                Células con igual alto y ancho con núcleos esféricos centrales. Especializado en absorción y secreción activa. Se localiza en los túbulos renales y la superficie de los ovarios.`;
+            } else if (currentLayers === 'simple' && currentShape === 'cilindrico') {
+                card.innerHTML = `<strong class="text-accent block">Epitelio Cilíndrico Simple:</strong>
+                Células más altas que anchas con núcleos ovalados en tercio basal. Puede presentar microvellosidades (revestimiento gastrointestinal) o cilios (trompas uterinas).`;
+            } else if (currentLayers === 'estratificado' && currentShape === 'pavimentoso') {
+                card.innerHTML = `<strong class="text-accent block">Epitelio Pavimentoso Estratificado:</strong>
+                Múltiples estratos celulares; las capas superficiales son aplanadas. La variedad queratinizada conforma la epidermis cutánea (barrera mecánica primordial en fisioterapia y masoterapia) y la no queratinizada tapiza la boca y esófago.`;
+            } else if (currentLayers === 'pseudo' || currentShape === 'transicion') {
+                card.innerHTML = `<strong class="text-accent block">Epitelio Especializado (${layerName} ${shapeName}):</strong>
+                El epitelio <em>cilíndrico pseudoestratificado ciliado</em> tapiza la tráquea y árbol bronquial (responsable del clearance mucociliar). El <em>urotelio o de transición</em> reviste la vejiga y uréteres, modificando su grosor según el grado de distensión vesical.`;
+            } else {
+                card.innerHTML = `<strong class="text-accent block">Epitelio ${shapeName} ${layerName}:</strong>
+                Configuración histológica adaptada a funciones específicas de secreción glandular o conductos excretores de mayor calibre.`;
+            }
+
+            drawMicroscopioCanvas();
+        }
+
+        function drawMicroscopioCanvas() {
+            const canvas = document.getElementById('canvas-microscopio');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const bmY = h - 45;
+
+            // Membrana basal
+            ctx.strokeStyle = '#475569';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(20, bmY);
+            ctx.lineTo(w - 20, bmY);
+            ctx.stroke();
+
+            // Tejido conectivo subyacente
+            ctx.fillStyle = '#f1f5f9';
+            ctx.fillRect(20, bmY + 3, w - 40, 35);
+            ctx.fillStyle = '#64748b';
+            ctx.font = '10px Outfit, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Tejido Conectivo Subyacente (Lámina Propia)', w / 2, bmY + 22);
+
+            // Dibujar células según capas y forma
+            ctx.fillStyle = '#fee2e2';
+            ctx.strokeStyle = '#f87171';
+            ctx.lineWidth = 1.5;
+
+            const startX = 35;
+            const availableW = w - 70;
+
+            if (currentLayers === 'simple') {
+                if (currentShape === 'pavimentoso') {
+                    const count = 7;
+                    const cW = availableW / count;
+                    const cH = 22;
+                    for (let i = 0; i < count; i++) {
+                        const x = startX + i * cW;
+                        const y = bmY - cH;
+                        ctx.fillStyle = '#fce7f3';
+                        ctx.strokeStyle = '#f472b6';
+                        ctx.fillRect(x, y, cW - 2, cH);
+                        ctx.strokeRect(x, y, cW - 2, cH);
+
+                        // Núcleo aplanado
+                        ctx.fillStyle = '#7c3aed';
+                        ctx.beginPath();
+                        ctx.ellipse(x + cW / 2, y + cH / 2, 9, 4, 0, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                } else if (currentShape === 'cubico') {
+                    const count = 8;
+                    const cW = availableW / count;
+                    const cH = cW;
+                    for (let i = 0; i < count; i++) {
+                        const x = startX + i * cW;
+                        const y = bmY - cH;
+                        ctx.fillStyle = '#fce7f3';
+                        ctx.strokeStyle = '#f472b6';
+                        ctx.fillRect(x, y, cW - 2, cH);
+                        ctx.strokeRect(x, y, cW - 2, cH);
+
+                        // Núcleo esférico central
+                        ctx.fillStyle = '#7c3aed';
+                        ctx.beginPath();
+                        ctx.arc(x + cW / 2, y + cH / 2, 9, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                } else {
+                    // Cilíndrico
+                    const count = 9;
+                    const cW = availableW / count;
+                    const cH = 95;
+                    for (let i = 0; i < count; i++) {
+                        const x = startX + i * cW;
+                        const y = bmY - cH;
+                        ctx.fillStyle = '#fce7f3';
+                        ctx.strokeStyle = '#f472b6';
+                        ctx.fillRect(x, y, cW - 2, cH);
+                        ctx.strokeRect(x, y, cW - 2, cH);
+
+                        // Núcleo basal ovalado
+                        ctx.fillStyle = '#7c3aed';
+                        ctx.beginPath();
+                        ctx.ellipse(x + cW / 2, y + cH - 25, 7, 13, 0, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Microvellosidades apicales
+                        ctx.strokeStyle = '#ec4899';
+                        ctx.lineWidth = 1;
+                        for (let k = 0; k < 4; k++) {
+                            ctx.beginPath();
+                            ctx.moveTo(x + 5 + k * 8, y);
+                            ctx.lineTo(x + 5 + k * 8, y - 6);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            } else if (currentLayers === 'estratificado') {
+                // Estratificado (múltiples capas)
+                const rows = 4;
+                const cols = 8;
+                const cW = availableW / cols;
+                const rH = 24;
+                for (let r = 0; r < rows; r++) {
+                    for (let c = 0; c < cols; c++) {
+                        const x = startX + c * cW;
+                        const y = bmY - (r + 1) * rH;
+                        ctx.fillStyle = r === rows - 1 ? '#fdf2f8' : '#fce7f3';
+                        ctx.strokeStyle = '#f472b6';
+                        ctx.lineWidth = 1;
+                        ctx.fillRect(x, y, cW - 1, rH);
+                        ctx.strokeRect(x, y, cW - 1, rH);
+
+                        ctx.fillStyle = '#7c3aed';
+                        ctx.beginPath();
+                        ctx.arc(x + cW / 2, y + rH / 2, 5, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+            } else {
+                // Pseudoestratificado (núcleos a diferentes alturas pero todas apoyan en la base)
+                const count = 10;
+                const cW = availableW / count;
+                const cH = 90;
+                for (let i = 0; i < count; i++) {
+                    const x = startX + i * cW;
+                    const y = bmY - cH;
+                    ctx.fillStyle = '#fce7f3';
+                    ctx.strokeStyle = '#f472b6';
+                    ctx.lineWidth = 1;
+                    ctx.fillRect(x, y, cW - 2, cH);
+                    ctx.strokeRect(x, y, cW - 2, cH);
+
+                    // Núcleos alternados
+                    const nY = i % 2 === 0 ? y + 60 : y + 30;
+                    ctx.fillStyle = '#7c3aed';
+                    ctx.beginPath();
+                    ctx.ellipse(x + cW / 2, nY, 7, 11, 0, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Cilios apicales
+                    ctx.strokeStyle = '#8b5cf6';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.moveTo(x + cW / 2, y);
+                    ctx.lineTo(x + cW / 2 + (i % 2 === 0 ? 3 : -3), y - 10);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // =================================================================
+        // MÓDULO 3: TEJIDO CONECTIVO EN CANVAS
+        // =================================================================
+        let currentConnectiveFamily = 'laxo';
+
+        function selectConnectiveFamily(fam) {
+            currentConnectiveFamily = fam;
+            ['laxo', 'denso', 'especial'].forEach(f => {
+                const btn = document.getElementById(`btn-con-${f}`);
+                if (f === fam) {
+                    btn.className = 'p-4 rounded-2xl border-2 text-left transition bg-accent-light border-accent shadow-sm';
+                    btn.querySelector('span:first-child').className = 'font-bold text-accent text-sm';
+                    btn.querySelector('span:last-child').className = 'text-[10px] font-bold px-2 py-0.5 bg-accent text-white rounded';
+                } else {
+                    btn.className = 'p-4 rounded-2xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300';
+                    btn.querySelector('span:first-child').className = 'font-bold text-gray-700 text-sm';
+                    btn.querySelector('span:last-child').className = 'text-[10px] font-bold px-2 py-0.5 bg-gray-200 text-gray-700 rounded';
+                }
+            });
+
+            const title = document.getElementById('connective-detail-title');
+            const badge = document.getElementById('connective-badge');
+            const desc = document.getElementById('connective-desc-box');
+
+            if (fam === 'laxo') {
+                title.textContent = 'Tejido Conectivo Laxo (Areolar y Adiposo)';
+                badge.textContent = 'Relleno y Flexibilidad Tisular';
+                desc.innerHTML = `<strong class="text-accent block text-sm">Relevancia en Kinesiología y Fisiatría:</strong>
+                <p>El <strong>tejido conectivo areolar</strong> se encuentra debajo de todos los epitelios, envuelve los paquetes vasculonerviosos y forma la lámina propia de las mucosas. Su sustancia fundamental gelatinosa rica en ácido hialurónico amortigua las presiones y facilita el deslizamiento durante el masaje terapéutico y la movilización miofascial.</p>`;
+            } else if (fam === 'denso') {
+                title.textContent = 'Tejido Conectivo Denso (Modelado e Inmodelado)';
+                badge.textContent = 'Resistencia a Tracciones Biomecánicas';
+                desc.innerHTML = `<strong class="text-accent block text-sm">Relevancia en Kinesiología y Fisiatría:</strong>
+                <p>El <strong>conectivo denso modelado</strong> compone tendones y ligamentos, organizando sus fibras colágenas en haces estrictamente paralelos para soportar enormes tensiones unidireccionales generadas por la contracción muscular. El <strong>denso inmodelado</strong> resiste fuerzas en múltiples planos en la dermis profunda y las cápsulas articulares.</p>`;
+            } else {
+                title.textContent = 'Tejidos Conectivos Especializados (Cartílago, Hueso y Sangre)';
+                badge.textContent = 'Soporte Esquelético y Transporte';
+                desc.innerHTML = `<strong class="text-accent block text-sm">Relevancia en Kinesiología y Fisiatría:</strong>
+                <p>El <strong>tejido cartilaginoso</strong> (hialino, elástico y fibrocartílago) carece de inervación y vasos, nutriéndose por imbibición del líquido sinovial durante la carga articular. El <strong>tejido óseo</strong> provee las palancas rígidas locomotoras y reserva de calcio, mientras que el <strong>sanguíneo</strong> transporta oxígeno y nutrientes a los músculos activos.</p>`;
+            }
+
+            drawConectivoCanvas();
+        }
+
+        function drawConectivoCanvas() {
+            const canvas = document.getElementById('canvas-conectivo');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            if (currentConnectiveFamily === 'laxo') {
+                // Fondo gelatinoso (sustancia fundamental)
+                ctx.fillStyle = '#f0fdf4';
+                ctx.fillRect(10, 10, w - 20, h - 20);
+
+                // Fibras de colágeno (onduladas, gruesas)
+                ctx.strokeStyle = '#fca5a5';
+                ctx.lineWidth = 4;
+                for (let i = 0; i < 5; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(30, 40 + i * 40);
+                    ctx.bezierCurveTo(150, 20 + i * 40, 300, 60 + i * 40, w - 30, 35 + i * 40);
+                    ctx.stroke();
+                }
+
+                // Fibras elásticas (delgadas, ramificadas)
+                ctx.strokeStyle = '#3b82f6';
+                ctx.lineWidth = 1.5;
+                for (let i = 0; i < 4; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(40, 180 - i * 40);
+                    ctx.lineTo(200, 120 - i * 30);
+                    ctx.lineTo(w - 40, 160 - i * 35);
+                    ctx.stroke();
+                }
+
+                // Fibroblastos (células fusiformes con prolongaciones)
+                ctx.fillStyle = '#436600';
+                for (let k = 0; k < 6; k++) {
+                    const fx = 70 + k * 65;
+                    const fy = 60 + (k % 3) * 55;
+                    ctx.beginPath();
+                    ctx.ellipse(fx, fy, 14, 5, Math.PI / 6, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.fillStyle = '#1e293b';
+                ctx.font = 'bold 11px Outfit, sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText('• Fibroblastos (verde)', 25, h - 25);
+                ctx.fillText('• Colágeno (rosado)', 160, h - 25);
+                ctx.fillText('• Elastina (azul)', 295, h - 25);
+
+            } else if (currentConnectiveFamily === 'denso') {
+                // Denso modelado: Haces gruesos paralelos de colágeno
+                ctx.fillStyle = '#fef2f2';
+                ctx.fillRect(10, 10, w - 20, h - 20);
+
+                ctx.strokeStyle = '#f87171';
+                ctx.lineWidth = 7;
+                for (let i = 0; i < 8; i++) {
+                    const y = 30 + i * 26;
+                    ctx.beginPath();
+                    ctx.moveTo(25, y);
+                    ctx.bezierCurveTo(160, y - 6, 320, y + 6, w - 25, y);
+                    ctx.stroke();
+                }
+
+                // Núcleos de fibrocitos aplanados comprimidos entre haces
+                ctx.fillStyle = '#436600';
+                for (let r = 0; r < 7; r++) {
+                    for (let c = 0; c < 4; c++) {
+                        const x = 60 + c * 100 + (r % 2) * 30;
+                        const y = 43 + r * 26;
+                        ctx.beginPath();
+                        ctx.ellipse(x, y, 11, 3, 0, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                ctx.fillStyle = '#1e293b';
+                ctx.font = 'bold 11px Outfit, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Haces densos y paralelos de Colágeno Tipo I (Tendón / Ligamento)', w / 2, h - 22);
+
+            } else {
+                // Cartílago hialino con condrocitos en lagunas (isógenos)
+                ctx.fillStyle = '#f8fafc';
+                ctx.fillRect(10, 10, w - 20, h - 20);
+
+                // Matriz homogénea vítrea
+                ctx.fillStyle = '#ede9fe';
+                ctx.fillRect(20, 20, w - 40, h - 40);
+
+                // Grupos isógenos
+                const groups = [
+                    { x: 100, y: 80 }, { x: 220, y: 120 }, { x: 360, y: 80 },
+                    { x: 160, y: 180 }, { x: 300, y: 180 }
+                ];
+
+                groups.forEach(g => {
+                    // Laguna
+                    ctx.fillStyle = '#ffffff';
+                    ctx.strokeStyle = '#8b5cf6';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.ellipse(g.x, g.y, 24, 16, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    // Condrocitos gemelos
+                    ctx.fillStyle = '#6d28d9';
+                    ctx.beginPath();
+                    ctx.arc(g.x - 9, g.y, 6, 0, Math.PI * 2);
+                    ctx.arc(g.x + 9, g.y, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                ctx.fillStyle = '#1e293b';
+                ctx.font = 'bold 11px Outfit, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Cartílago Articular: Condrocitos en lagunas y matriz avascular vítrea', w / 2, h - 22);
+            }
+        }
+
+        // =================================================================
+        // MÓDULO 4: CÉLULAS Y MEC
+        // =================================================================
+        function inspectCell(type) {
+            const buttons = ['fibroblasto', 'macrofago', 'mastocito', 'plasmocito'];
+            buttons.forEach(b => {
+                const el = document.getElementById(`btn-cell-${b}`);
+                if (b === type) {
+                    el.className = 'p-2.5 rounded-xl border-2 text-left font-bold transition bg-accent-light border-accent text-accent';
+                } else {
+                    el.className = 'p-2.5 rounded-xl border-2 text-left font-bold transition bg-white border-gray-200 text-gray-700 hover:border-gray-300';
+                }
+            });
+
+            const card = document.getElementById('cell-detail-card');
+            if (type === 'fibroblasto') {
+                card.innerHTML = `<strong class="text-accent block text-sm">Fibroblastos y Fibrocitos:</strong>
+                Son las células primordiales del tejido conectivo. El <strong>fibroblasto</strong> (-blasto) es una célula metabólicamente muy activa, fusiforme, encargada de fabricar colágeno, elastina y proteoglucanos durante la cicatrización. El <strong>fibrocito</strong> (-cito) es la forma madura y quiescente de mantenimiento.`;
+            } else if (type === 'macrofago') {
+                card.innerHTML = `<strong class="text-accent block text-sm">Macrófagos (Histiocitos):</strong>
+                Células fagocíticas residentes derivadas de los monocitos circulantes. Se encargan del desbridamiento biológico fagocitando restos de tejido necrótico, bacterias y detritos tras un traumatismo muscular o articular, liberando citocinas que guían la inflamación y reparación.`;
+            } else if (type === 'mastocito') {
+                card.innerHTML = `<strong class="text-accent block text-sm">Mastocitos (Células Cebadas):</strong>
+                Contienen abundantes gránulos citoplasmáticos con mediadores vasoactivos como <strong>histamina</strong> (aumenta permeabilidad vascular y produce rubor/edema) y <strong>heparina</strong> (anticoagulante). Desencadenan la respuesta inflamatoria aguda tras lesiones mecánicas.`;
+            } else {
+                card.innerHTML = `<strong class="text-accent block text-sm">Células Plasmáticas (Plasmocitos):</strong>
+                Derivadas de los linfocitos B estimulados por antígenos. Poseen un núcleo característico con cromatina en "rueda de carro" y abundante retículo endoplásmico rugoso para sintetizar y secretar grandes cantidades de <strong>anticuerpos (inmunoglobulinas)</strong>.`;
+            }
+        }
+
+        // =================================================================
+        // MÓDULO 5: CASOS CLÍNICOS
+        // =================================================================
+        const caseSolutions = {
+            1: {
+                correct: 'a',
+                explanation: '¡Excelente razonamiento! La epidermis es completamente avascular (se nutre por difusión de la dermis papilar subyacente) y posee células madre basales con alta capacidad regenerativa mitótica, restituyendo la barrera sin cicatriz fibrosa profunda.'
+            },
+            2: {
+                correct: 'a',
+                explanation: '¡Respuesta correcta! El tendón está formado por conectivo denso modelado. Su mínima vascularización le otorga gran resistencia a la tracción pero un metabolismo de recambio tisular lento, explicando por qué las tendinopatías requieren planes de rehabilitación kinesiológica prolongados.'
+            },
+            3: {
+                correct: 'a',
+                explanation: '¡Muy bien deducido! Las fibras elásticas (elastina) proveen la fuerza retráctil pasiva durante la espiración normal. Su destrucción elastolítica causa colapso bronquiolar prematuro y atrapamiento de aire característico del enfisema pulmonar.'
+            },
+            4: {
+                correct: 'a',
+                explanation: '¡Brillante! El fibroblasto es el artífice de la síntesis de colágeno. Tras un desgarro muscular, prolifera y deposita colágeno de reparación formando una cicatriz fibrosa que los kinesiólogos modulan mediante carga mecánica progresiva para alinear las fibras.'
+            }
+        };
+
+        function checkCase(caseNum, optionSelected) {
+            const data = caseSolutions[caseNum];
+            const feedbackEl = document.getElementById(`c${caseNum}-feedback`);
+            const optA = document.getElementById(`c${caseNum}-opt-a`);
+            const optB = document.getElementById(`c${caseNum}-opt-b`);
+            const optC = document.getElementById(`c${caseNum}-opt-c`);
+
+            [optA, optB, optC].forEach(b => {
+                b.className = 'w-full text-left p-3 rounded-xl border border-gray-200 transition';
+            });
+
+            feedbackEl.classList.remove('hidden');
+
+            if (optionSelected === data.correct) {
+                document.getElementById(`c${caseNum}-opt-${optionSelected}`).className = 'w-full text-left p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 transition font-medium';
+                feedbackEl.className = 'p-3 rounded-xl text-xs font-medium bg-emerald-50 text-emerald-900 border border-emerald-200 flex items-start gap-2';
+                feedbackEl.innerHTML = `<i class="fa-solid fa-check-circle text-emerald-600 mt-0.5"></i> <div>${data.explanation}</div>`;
+            } else {
+                document.getElementById(`c${caseNum}-opt-${optionSelected}`).className = 'w-full text-left p-3 rounded-xl border-2 border-rose-300 bg-rose-50 text-rose-900 transition';
+                feedbackEl.className = 'p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-900 border border-rose-200 flex items-start gap-2';
+                feedbackEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-600 mt-0.5"></i> <div>Revisá las propiedades histológicas fundamentales (vascularización, componentes de la matriz y tipos celulares).</div>`;
+            }
+        }
+
+        // Inicialización
+        window.addEventListener('DOMContentLoaded', () => {
+            selectPolarZone('apical');
+            updateMicroscopioInfo();
+            selectConnectiveFamily('laxo');
+        });
+    </script>
+</body>
+</html>
